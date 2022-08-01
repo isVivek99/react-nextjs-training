@@ -1,0 +1,42 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  height: inherit;
+}
+.home_screen {
+  width: 80%;
+  background-color: #fff;
+  margin: auto;
+  margin-top: 2rem;
+  padding: 1.25rem 3rem;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+
+  flex-grow: 1;
+}
+.todo_list_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #000;
+}
+
+.btn_todo_add {
+  background-color: #282c34;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 2rem;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.home_screen_btn_hover {
+  font-weight: 900;
+  font-size: 1rem;
+  padding: 0.2rem;
+  line-height: 2rem;
+}
