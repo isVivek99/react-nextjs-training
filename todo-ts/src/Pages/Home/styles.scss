@@ -1,3 +1,4 @@
+@import '../../sass/index.scss';
 .home {
   display: flex;
   flex-direction: column;
@@ -13,7 +14,6 @@
   padding: 1.25rem 3rem;
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
-
   flex-grow: 1;
 }
 .todo_list_header {
@@ -21,6 +21,7 @@
   justify-content: space-between;
   align-items: center;
   color: #000;
+  margin-bottom: 2rem;
 }
 
 .btn_todo_add {
@@ -39,4 +40,18 @@
   font-size: 1rem;
   padding: 0.2rem;
   line-height: 2rem;
+}
+
+.toastmodal_btn {
+  background-color: $color-primary;
+  color: $color-white;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+.toastmodal_btn_text {
+  color: $color-white;
+}
+
+.todo {
+  cursor: pointer;
 }
