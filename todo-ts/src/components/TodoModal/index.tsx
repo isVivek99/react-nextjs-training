@@ -99,7 +99,9 @@ const TodoModal = ({
                 <p>cancel</p>
               </div>
               <div className='btn toastmodal_btn' onClick={handleSubmit}>
-                <p className='toastmodal_btn_text'>{actionBtnTitle}</p>
+                <p className='toastmodal_btn_text' data-testid='todoModal'>
+                  {actionBtnTitle}
+                </p>
               </div>
             </div>
           </div>

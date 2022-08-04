@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pops when clicked 1`] = `
+<div
+  className="modal-overlay modal-overlay-active"
+>
+  <div
+    className="todomodal padding-default mx-auto"
+  >
+    <div
+      className="todomodal_inputs"
+    >
+      <div
+        className=" my-1"
+      >
+        <input
+          className="todomodal_input"
+          onChange={[Function]}
+          placeholder="Add a title"
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="my-1"
+      >
+        <textarea
+          className="todomodal_input"
+          onChange={[Function]}
+          placeholder="Add a description"
+          value=""
+        />
+      </div>
+      <div>
+        <div
+          className="d-flex justify-content-between my-2"
+        >
+          <div
+            className="btn toastmodal_btn"
+            onClick={[Function]}
+          >
+            <p>
+              cancel
+            </p>
+          </div>
+          <div
+            className="btn toastmodal_btn"
+            onClick={[Function]}
+          >
+            <p
+              className="toastmodal_btn_text"
+              data-testid="todoModal"
+            >
+              save
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
