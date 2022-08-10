@@ -1,10 +1,12 @@
 import React from 'react';
 import { useRef, useEffect } from 'react';
+import FancyButton from './FancyButton';
 import './styles.css';
 
 const Login = () => {
   const usernameRef = useRef(null);
   const passwordRef = useRef(null);
+  const ref = React.createRef();
 
   useEffect(() => {
     usernameRef.current.focus();
@@ -12,6 +14,7 @@ const Login = () => {
 
   const onSubmitHandler = () => {
     console.log(usernameRef.current.value, passwordRef.current.value);
+    console.log(ref.current);
   };
 
   return (
@@ -34,9 +37,9 @@ const Login = () => {
         <a href='/'>Forgot?</a>
       </div>
       <div style={{ width: '100%' }}>
-        <button className='login_btn' onClick={onSubmitHandler}>
+        <FancyButton ref={ref} clickhandler={onSubmitHandler}>
           LOGIN
-        </button>
+        </FancyButton>
       </div>
     </div>
   );
