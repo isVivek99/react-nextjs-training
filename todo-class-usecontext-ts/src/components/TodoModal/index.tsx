@@ -1,121 +1,129 @@
-import React, { useState, useEffect } from 'react';
-import { useTodoContext, actions } from '../../store';
+import React from 'react';
+import { TodoContext, actions } from '../../store';
 import './styles.scss';
 
 interface TodoModalProps {
   onClose: () => unknown;
-  setTodos?: any;
   actionBtnTitle: string;
   todo?: any;
   newTodo: boolean;
   index?: number;
 }
 
-const TodoModal = ({
-  onClose,
-  setTodos,
-  actionBtnTitle,
-  todo,
-  newTodo = true,
-  index,
-}: TodoModalProps) => {
-  const { todos, dispatchTodo } = useTodoContext();
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+interface Errors {
+  titleError: string;
+  descriptionError: string;
+}
+interface TodoModalState {
+  title: string;
+  description: string;
+  errors: Errors;
+}
 
-  const [errors, setErrors] = useState({
+export default class TodoModal extends React.Component<
+  TodoModalProps,
+  TodoModalState
+> {
+  state: TodoModalState = {
     title: '',
     description: '',
-  });
+    errors: {
+      titleError: '',
+      descriptionError: '',
+    },
+  };
 
-  const handleSubmit = (e: any) => {
+  handleSubmit = (e: any) => {
     e.preventDefault();
 
-    setErrors({
-      title: '',
-      description: '',
-    });
-
-    //* form validation
-    if (title.trim() === '' && description.trim() === '') {
-      setErrors((prev) => ({
-        ...prev,
-        title: 'Title is required',
-        description: 'Description is required',
-      }));
-    } else if (title.trim() === '') {
-      setErrors((prev) => ({ ...prev, title: 'Title is required' }));
-    } else if (description.trim() === '') {
-      setErrors((prev) => ({
-        ...prev,
-        description: 'Description is required',
-      }));
+    // form validation
+    if (
+      this.state.title.trim() === '' &&
+      this.state.description.trim() === ''
+    ) {
+      this.setState({
+        errors: {
+          titleError: 'Title is required',
+          descriptionError: 'Description is required',
+        },
+      });
+    } else if (this.state.title.trim() === '') {
+      this.setState({ description: '', title: 'Title is required' });
+    } else if (this.state.description.trim() === '') {
+      this.setState({ description: 'Description is required', title: '' });
     } else {
-      if (newTodo) {
-        setTodos((prev: any) => [...prev, { title, description }]);
-        dispatchTodo({
-          type: actions.addTodo,
-          payload: { title, description },
-          id: Math.floor(Math.random() * 100),
+      if (this.props.newTodo) {
+        this.props.onClose();
+
+        this.context.addTodo({
+          title: this.state.title,
+          description: this.state.description,
         });
-        onClose();
       } else {
-        setTodos((prev: any) => {
-          let tempArr = [...prev];
-          tempArr.splice(index ? index : 0, 1, { title, description });
-          return tempArr;
-        });
-        onClose();
+        this.props.onClose();
       }
     }
   };
 
-  useEffect(() => {
-    setTitle(todo ? todo.title : '');
-    setDescription(todo ? todo.description : '');
-  }, [todo]);
-
-  return (
-    <div className='modal-overlay modal-overlay-active'>
-      <div className='todomodal padding-default mx-auto'>
-        <div className='todomodal_inputs'>
-          <div className=' my-1'>
-            <input
-              type='text'
-              className='todomodal_input'
-              placeholder='Add a title'
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-          </div>
-          {errors.title && <p className='form-error-text'>{errors.title}</p>}
-          <div className='my-1'>
-            <textarea
-              className='todomodal_input'
-              placeholder='Add a description'
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </div>
-          {errors.description && (
-            <p className='form-error-text'>{errors.description}</p>
-          )}
-          <div>
-            <div className='d-flex justify-content-between my-2'>
-              <div className='btn toastmodal_btn' onClick={() => onClose()}>
-                <p>cancel</p>
-              </div>
-              <div className='btn toastmodal_btn' onClick={handleSubmit}>
-                <p className='toastmodal_btn_text' data-testid='todoModal'>
-                  {actionBtnTitle}
-                </p>
+  // useEffect(() => {
+  //   setTitle(todo ? todo.title : '');
+  //   setDescription(todo ? todo.description : '');
+  // }, [todo]);
+  static contextType = TodoContext;
+  context!: React.ContextType<typeof TodoContext>;
+  render() {
+    return (
+      <div className='modal-overlay modal-overlay-active'>
+        <div className='todomodal padding-default mx-auto'>
+          <div className='todomodal_inputs'>
+            <div className=' my-1'>
+              <input
+                type='text'
+                name='title'
+                className='todomodal_input'
+                placeholder='Add a title'
+                value={this.state.title}
+                onChange={(e: any) => {
+                  this.setState({ title: e.target.value });
+                }}
+              />
+            </div>
+            {this.state.errors.titleError && (
+              <p className='form-error-text'>{this.state.errors.titleError}</p>
+            )}
+            <div className='my-1'>
+              <textarea
+                className='todomodal_input'
+                placeholder='Add a description'
+                value={this.state.description}
+                onChange={(e) => this.setState({ description: e.target.value })}
+              />
+            </div>
+            {this.state.errors.descriptionError && (
+              <p className='form-error-text'>
+                {this.state.errors.descriptionError}
+              </p>
+            )}
+            <div>
+              <div className='d-flex justify-content-between my-2'>
+                <div
+                  className='btn toastmodal_btn'
+                  onClick={() => this.props.onClose()}
+                >
+                  <p>cancel</p>
+                </div>
+                <div className='btn toastmodal_btn' onClick={this.handleSubmit}>
+                  <p className='toastmodal_btn_text' data-testid='todoModal'>
+                    {this.props.actionBtnTitle}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
-export default TodoModal;
+TodoModal.contextType = TodoContext;
