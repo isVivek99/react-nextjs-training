@@ -5,14 +5,14 @@ interface Todo {
   error?: Error;
   title: string;
   description: string;
-  id: number;
+  id?: number;
   index?: number;
 }
 interface TodoArray {
   todos: Todo[];
   dispatchTodo?: any;
   addTodo?: any;
-  deleteTodo?: any;
+  removeTodo?: any;
 }
 
 const initialState: TodoArray = { todos: [] };
@@ -70,7 +70,10 @@ class TodoProvider extends React.Component<any, TodoArray> {
   state = initialState;
 
   addTodo = (payload: Todo) => {
+    console.log(payload);
+
     const tempState = { todos: [...this.state.todos, payload] };
+
     this.setState(tempState);
   };
 
@@ -99,7 +102,7 @@ class TodoProvider extends React.Component<any, TodoArray> {
         value={{
           ...this.state,
           addTodo: this.addTodo,
-          deleteTodo: this.removeTodo,
+          removeTodo: this.removeTodo,
         }}
       >
         {this.props.children}
@@ -108,6 +111,4 @@ class TodoProvider extends React.Component<any, TodoArray> {
   }
 }
 
-const useTodoContext = () => React.useContext(TodoContext);
-
-export { TodoProvider, useTodoContext };
+export { TodoProvider };

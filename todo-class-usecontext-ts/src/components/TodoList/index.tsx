@@ -1,32 +1,27 @@
 import React from 'react';
 import Todo from '../Todo';
-import { useTodoContext, actions } from '../../store';
-interface TodoProps {
-  title: '';
-  description: '';
+import { TodoContext, actions } from '../../store';
+
+export default class TodoList extends React.Component<any, any> {
+  static contextType = TodoContext;
+  context!: React.ContextType<typeof TodoContext>;
+  render() {
+    return (
+      <div>
+        <section className='todos'>
+          {this.context.todos?.map(
+            (item: { title: string; description: string }, index: number) => (
+              <div key={index}>
+                <Todo
+                  title={item.title}
+                  description={item.description}
+                  index={index}
+                />
+              </div>
+            )
+          )}
+        </section>
+      </div>
+    );
+  }
 }
-
-const TodoList = ({ deleteTodo }: any) => {
-  const { todos, dispatchTodo } = useTodoContext();
-
-  return (
-    <div>
-      <section className='todos'>
-        {todos?.map(
-          (item: { title: string; description: string }, index: number) => (
-            <div key={index}>
-              <Todo
-                title={item.title}
-                description={item.description}
-                deleteTodo={deleteTodo}
-                index={index}
-              />
-            </div>
-          )
-        )}
-      </section>
-    </div>
-  );
-};
-
-export default TodoList;

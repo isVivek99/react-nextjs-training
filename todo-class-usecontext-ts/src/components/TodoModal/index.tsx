@@ -53,12 +53,11 @@ export default class TodoModal extends React.Component<
       this.setState({ description: 'Description is required', title: '' });
     } else {
       if (this.props.newTodo) {
-        this.props.onClose();
-
         this.context.addTodo({
           title: this.state.title,
           description: this.state.description,
         });
+        this.props.onClose();
       } else {
         this.props.onClose();
       }

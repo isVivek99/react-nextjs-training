@@ -1,18 +1,17 @@
 import React from 'react';
 import TodoModal from '../../components/TodoModal';
 import TodoList from '../../components/TodoList';
-import { useTodoContext, TodoContext, actions } from '../../store';
+import { TodoContext } from '../../store';
 import './styles.scss';
-import { TodoComment } from 'typescript';
 
 interface Todo {
   title: '';
   description: '';
 }
-type MyState = {
+interface MyState {
   showModal: boolean;
   todos: Todo[];
-};
+}
 export default class Home extends React.Component<any, MyState> {
   state: MyState = {
     showModal: false,
@@ -53,7 +52,7 @@ export default class Home extends React.Component<any, MyState> {
           )}
 
           <section className='todos'>
-            <TodoList todos={this.state.todos} />
+            <TodoList />
           </section>
         </main>
       </div>
