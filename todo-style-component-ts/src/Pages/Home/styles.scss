@@ -23,35 +23,3 @@
   color: #000;
   margin-bottom: 2rem;
 }
-
-.btn_todo_add {
-  background-color: #282c34;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 2rem;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-.home_screen_btn_hover {
-  font-weight: 900;
-  font-size: 1rem;
-  padding: 0.2rem;
-  line-height: 2rem;
-}
-
-.toastmodal_btn {
-  background-color: $color-primary;
-  color: $color-white;
-  padding: 0.5rem;
-  border-radius: 4px;
-}
-.toastmodal_btn_text {
-  color: $color-white;
-}
-
-.todo {
-  cursor: pointer;
-}

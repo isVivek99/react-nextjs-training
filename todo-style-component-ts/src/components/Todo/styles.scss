@@ -1,33 +1,5 @@
 @import '../../sass/index.scss';
-.edit_btn {
-  cursor: pointer;
-  position: relative;
-  width: 20px;
-  height: 20px;
-  text-align: center;
-}
-.todo {
-  padding: 0 1rem;
-  border: 1px solid $color-primary;
-  border-radius: 1rem;
-  .todo_text {
-    color: #000;
-  }
-  .fas {
-    color: $color-primary;
-  }
-  &:hover {
-    background-color: $color-primary;
-    transition: 0.3s ease-in;
-    border-radius: 1rem;
-    .todo_text {
-      color: $color-white;
-    }
-    .fas {
-      color: white;
-    }
-  }
-}
+
 .dropdown__content:last-child {
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
@@ -55,4 +27,7 @@
 }
 .fas {
   font-size: 32px;
+}
+.todo {
+  cursor: pointer;
 }

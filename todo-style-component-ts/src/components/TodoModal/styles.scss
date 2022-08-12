@@ -1,32 +1,6 @@
 @import '../../sass/index.scss';
 
 .todomodal {
-  width: 40%;
-  border: 1px solid $color-border;
-  border-radius: 1rem;
-  background-color: $color-white;
-  &_inputs {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding: 1rem;
-    padding-bottom: 0;
-    min-height: calc(100% - 20px);
-    min-width: calc(100% - 20px);
-    border-radius: 1rem;
-    background-color: $color-white;
-  }
-
-  .todomodal_input {
-    border: 1px solid $color-border;
-    border-radius: 0.5rem;
-    font-size: 1.2rem;
-    padding: 0.5rem;
-    min-width: 100%;
-    max-width: 100%;
-    max-height: 400px;
-    padding: 1rem;
-  }
   .form-error-text {
     font-size: 0.75rem;
     font-weight: bold;
@@ -46,4 +20,9 @@
   bottom: 0;
   left: 0;
   right: 0;
+}
+.toastmodal_btn {
+}
+.toastmodal_btn_text {
+  color: $color-white;
 }

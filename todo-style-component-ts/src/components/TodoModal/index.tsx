@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTodoContext, actions } from '../../store';
 import './styles.scss';
+import styled from 'styled-components';
 
 interface TodoModalProps {
   onClose: () => unknown;
@@ -10,6 +11,54 @@ interface TodoModalProps {
   newTodo: boolean;
   index?: number;
 }
+
+const StyledTodoModal = styled.div`
+  width: 40%;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  background-color: #fff;
+`;
+
+const StyledInput = styled.input`
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  min-width: 90%;
+  max-width: 90%;
+  max-height: 400px;
+  padding: 1rem;
+`;
+
+const StyledInputTextArea = styled.textarea`
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  min-width: 90%;
+  max-width: 90%;
+  max-height: 400px;
+  padding: 1rem;
+`;
+
+const StyledTodoModalInputs = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1rem;
+  padding-bottom: 0;
+  min-height: calc(100% - 20px);
+  min-width: calc(100% - 20px);
+  border-radius: 1rem;
+  background-color: #fff;
+`;
+
+const ModalBtn = styled.div`
+  background-color: #282c34;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 4px;
+`;
 
 const TodoModal = ({
   onClose,
@@ -76,10 +125,11 @@ const TodoModal = ({
 
   return (
     <div className='modal-overlay modal-overlay-active'>
-      <div className='todomodal padding-default mx-auto'>
-        <div className='todomodal_inputs'>
+      {/* <div className='todomodal padding-default mx-auto'> */}
+      <StyledTodoModal>
+        <StyledTodoModalInputs>
           <div className=' my-1'>
-            <input
+            <StyledInput
               type='text'
               className='todomodal_input'
               placeholder='Add a title'
@@ -89,7 +139,7 @@ const TodoModal = ({
           </div>
           {errors.title && <p className='form-error-text'>{errors.title}</p>}
           <div className='my-1'>
-            <textarea
+            <StyledInputTextArea
               className='todomodal_input'
               placeholder='Add a description'
               value={description}
@@ -101,18 +151,19 @@ const TodoModal = ({
           )}
           <div>
             <div className='d-flex justify-content-between my-2'>
-              <div className='btn toastmodal_btn' onClick={() => onClose()}>
+              <ModalBtn className='btn' onClick={() => onClose()}>
                 <p>cancel</p>
-              </div>
-              <div className='btn toastmodal_btn' onClick={handleSubmit}>
+              </ModalBtn>
+              <ModalBtn className='btn' onClick={handleSubmit}>
                 <p className='toastmodal_btn_text' data-testid='todoModal'>
                   {actionBtnTitle}
                 </p>
-              </div>
+              </ModalBtn>
             </div>
           </div>
-        </div>
-      </div>
+        </StyledTodoModalInputs>
+      </StyledTodoModal>
+      {/* </div> */}
     </div>
   );
 };

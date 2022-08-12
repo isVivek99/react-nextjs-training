@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import TodoModal from '../TodoModal';
 import { useTodoContext, actions } from '../../store';
 import './styles.scss';
+import styled from 'styled-components';
 
 interface TodoProps {
   title: string;
@@ -9,6 +10,29 @@ interface TodoProps {
   index: number;
   deleteTodo: (index: number) => void;
 }
+
+const StyledTodo = styled.div`
+  padding: 0 1rem;
+  border: 1px solid #282c34;
+  border-radius: 1rem;
+  .todo_text {
+    color: #000;
+  }
+  .fas {
+    color: #282c34;
+  }
+  &:hover {
+    background-color: #282c34;
+    transition: 0.3s ease-in;
+    border-radius: 1rem;
+    .todo_text {
+      color: #fff;
+    }
+    .fas {
+      color: #fff;
+    }
+  }
+`;
 
 const Todo = ({ title, description, index, deleteTodo }: TodoProps) => {
   const { todos, dispatchTodo } = useTodoContext();
@@ -38,7 +62,7 @@ const Todo = ({ title, description, index, deleteTodo }: TodoProps) => {
         />
       )}
 
-      <div className='todo mb-3 d-flex justify-content-between'>
+      <StyledTodo className=' mb-3 d-flex justify-content-between'>
         <div className='todo_text mb-3 d-flex flex-column'>
           <h3>{title}</h3>
           <h5>
@@ -55,7 +79,7 @@ const Todo = ({ title, description, index, deleteTodo }: TodoProps) => {
             <span className='fas fa-trash'></span>
           </div>
         </div>
-      </div>
+      </StyledTodo>
     </div>
   );
 };

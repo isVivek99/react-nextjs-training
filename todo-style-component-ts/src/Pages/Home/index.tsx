@@ -3,8 +3,29 @@ import TodoModal from '../../components/TodoModal';
 import TodoList from '../../components/TodoList';
 import { useTodoContext } from '../../store';
 import './styles.scss';
+import styled from 'styled-components';
 
-const Home = () => {
+const StyledNewTodoBtn = styled.div`
+  background-color: #282c34;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 2rem;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;
+
+const StyledTodoHeader = styled.h2`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #000;
+  margin-bottom: 2rem;
+`;
+
+const Home: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const { todos, dispatchTodo } = useTodoContext();
 
@@ -21,14 +42,16 @@ const Home = () => {
       <div className='home_header'>
         <h1>Todo app</h1>
       </div>
+
       <main className='home_screen'>
         <div className='todo_list_header'>
           <div className='todo_list_header_text'>
-            <h2>Todo List</h2>
+            <StyledTodoHeader>Todo List</StyledTodoHeader>
           </div>
-          <div className='btn_todo_add' onClick={() => setShowModal(true)}>
+
+          <StyledNewTodoBtn onClick={() => setShowModal(true)}>
             <span className='home_screen_btn_hover'>+</span>
-          </div>
+          </StyledNewTodoBtn>
         </div>
         {showModal && (
           <TodoModal
