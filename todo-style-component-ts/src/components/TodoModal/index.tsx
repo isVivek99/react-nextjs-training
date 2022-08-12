@@ -52,7 +52,6 @@ const TodoModal = ({
       }));
     } else {
       if (newTodo) {
-        setTodos((prev: any) => [...prev, { title, description }]);
         dispatchTodo({
           type: actions.addTodo,
           payload: { title, description },

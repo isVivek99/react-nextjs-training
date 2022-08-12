@@ -7,7 +7,6 @@ import './styles.scss';
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
   const { todos, dispatchTodo } = useTodoContext();
-  // const [todos, setTodos] = useState<Todo[]>([]);
 
   const handleOnClose = () => {
     setShowModal(false);
@@ -16,7 +15,6 @@ const Home = () => {
   const deleteTodo = (index: number) => {
     let tempArray = [...todos];
     tempArray.splice(index, 1);
-    // setTodos(tempArray);
   };
   return (
     <div className='home'>
