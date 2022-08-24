@@ -22,7 +22,8 @@ root.render(
           domain='dev-oirs-bxd.us.auth0.com'
           clientId='U0xIR2j93NyewAaSsxzLYweN556riepx'
           cacheLocation='localstorage'
-          scope='offline_access'
+          scope='offline_access openid profile email'
+          audience='http://localhost:4000/'
           redirectUri='http://localhost:3000/'
         >
           <App />

@@ -6,6 +6,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useDispatch, useSelector } from 'react-redux';
 import rootReducer from '../../redux';
 import { loginUserSuccess, logoutUser } from '../../actions';
+import axios from 'axios';
 interface userDetails {
   fName: string;
   email: string;
@@ -39,18 +40,32 @@ const Login = () => {
     dispatch(logoutUser());
   };
 
-  const callAPI = () => {};
-  const callProtectedAPI = () => {};
-
-  const getAccessToken = async () => {
-    const token = await getAccessTokenSilently();
-    const IDtoken = await getIdTokenClaims();
-    console.log('IDtoken:', IDtoken);
-    console.log('accesstoken:', token);
+  const callAPI = async () => {
+    try {
+      const resp = await axios.get('http://localhost:4000/');
+      console.log(resp);
+    } catch (error: any) {
+      console.log('error:', error.message);
+    }
   };
+  const callProtectedAPI = async () => {
+    const token = await getAccessTokenSilently();
+    console.log(token);
+
+    try {
+      const resp = await axios.get('http://localhost:4000/protected', {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(resp);
+    } catch (error: any) {
+      console.log('error:', error.message);
+    }
+  };
+
   React.useEffect(() => {
     console.log(isAuthenticated, user);
-    getAccessToken();
     if (isAuthenticated) dispatch(loginUserSuccess(user));
   }, [dispatch, isAuthenticated, user]);
   return (
@@ -107,10 +122,10 @@ const Login = () => {
 
       <ul>
         <li>
-          <button>Call API route</button>
+          <button onClick={callAPI}>Call API route</button>
         </li>
         <li>
-          <button>Call Protected API route</button>
+          <button onClick={callProtectedAPI}>Call Protected API route</button>
         </li>
       </ul>
     </>
