@@ -1,0 +1,83 @@
+@import './_variables.scss';
+
+.f-14 {
+  font-size: 14px;
+}
+.f-18 {
+  font-size: 18px;
+}
+.f-22 {
+  font-size: 22px;
+}
+.f-27 {
+  font-size: 27px;
+}
+
+.f-12 {
+  font-size: 12px;
+}
+.text-green {
+  color: $text-color-green;
+}
+.text-white {
+  color: $color-white;
+}
+.bold {
+  font-weight: 700;
+}
+.page__path {
+  font-size: 12px;
+  color: $listItems-color;
+}
+.color__gray {
+  color: $border-color-primary;
+}
+.bg__color__gray {
+  background-color: $background-color-gray;
+}
+.color__green {
+  color: $primary-color;
+}
+.text__link {
+  text-decoration: inherit;
+  color: inherit;
+}
+.text__link__nohover {
+  text-decoration: none;
+  color: $background-color-gray-2;
+}
+.text__link__nohover:hover {
+  text-decoration: none;
+  color: $background-color-gray-2;
+}
+.text__error {
+  color: $error-text-color;
+}
+.text__success {
+  color: $primary-color;
+}
+
+.text__link:hover {
+  font-weight: 700;
+  transition: all 250ms ease;
+  color: inherit;
+}
+.screen {
+  max-width: 1440px;
+  margin: auto;
+  background-color: $background-color-white;
+  filter: drop-shadow(1px 1px 5px $background-color-gray-2);
+}
+.padding-default {
+  padding: 1rem 3rem;
+}
+.text-600 {
+  font-weight: 600;
+}
+
+.text-700 {
+  font-weight: 700;
+}
+.fas {
+  cursor: pointer;
+}

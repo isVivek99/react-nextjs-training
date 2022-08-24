@@ -1,0 +1,22 @@
+.input_ele__content {
+  border-radius: 12px;
+  border: 1px solid $border-color-primary;
+  font-size: 14px;
+  background-color: $background-color-gray;
+  color: $primary-color;
+}
+.input_ele__content:focus {
+  outline: none;
+}
+
+.input_ele__label {
+  line-height: 18px;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
