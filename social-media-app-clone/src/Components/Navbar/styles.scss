@@ -1,0 +1,14 @@
+@import '../../sass/index.scss';
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  .max-width {
+    max-width: 935px;
+    width: 100%;
+  }
+}
+.fa-active {
+  -webkit-text-stroke: 2px #2c2b2a;
+  color: $color-white;
+}
