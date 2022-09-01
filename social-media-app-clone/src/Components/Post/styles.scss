@@ -11,3 +11,16 @@
     border-radius: inherit;
   }
 }
+.user_comment {
+  border-top: 1px solid $background-color-gray;
+  .comment_input {
+    max-height: 80px;
+    height: 36px;
+    border: none;
+    flex-grow: 1;
+    resize: none;
+  }
+  :focus {
+    outline: none;
+  }
+}

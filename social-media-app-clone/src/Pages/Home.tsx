@@ -1,12 +1,18 @@
 import React from 'react';
 import Navbar from '../Components/Navbar';
-import Post from '../Components/Post';
+import Posts from '../Components/Posts';
+import SuggestionBox from '../Components/SuggestionBox';
 const Home = () => {
   return (
-    <div>
-      <Navbar />
-      <Post />
-    </div>
+    <main>
+      <section>
+        <Navbar />
+      </section>
+      <section className='d-flex justify-content-center'>
+        <Posts />
+        <SuggestionBox />
+      </section>
+    </main>
   );
 };
 
