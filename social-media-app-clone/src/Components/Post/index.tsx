@@ -5,7 +5,12 @@ import Form from 'react-bootstrap/Form';
 import Button from '../Button';
 import BootstrapCarousel from '../Carousel';
 import './styles.scss';
-const Post = () => {
+interface PostsProps {
+  title: string;
+  subtitle: string;
+  url: string;
+}
+const Post = ({ title, subtitle, url }: PostsProps) => {
   return (
     <Card style={{ width: '29rem' }} className='mx-auto my-2'>
       <Card.Header>
@@ -34,7 +39,7 @@ const Post = () => {
         </Row>
       </Card.Header>
 
-      <BootstrapCarousel />
+      <BootstrapCarousel url={url} />
       <Card.Body>
         <Row className='pb-1'>
           <Col sm={4}>
@@ -63,9 +68,7 @@ const Post = () => {
         </Row>
         <Row className='pb-2'>
           <Card.Text className='f-14'>
-            <span className='bold page_owner'>brfootball </span> Yann Sommer
-            made a Bundesliga-record 19 saves in Mönchengladbach's draw against
-            Bayern Munich 🚫
+            <span className='bold page_owner'>brfootball </span> {title}
           </Card.Text>
         </Row>
         <Row className='pb-1'>

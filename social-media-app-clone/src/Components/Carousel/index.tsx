@@ -3,7 +3,11 @@ import Container from 'react-bootstrap/Container';
 import Carousel from 'react-bootstrap/Carousel';
 import './styles.scss';
 
-const BootstrapCarousel = () => {
+interface BootstrapCarouselProps {
+  url: string;
+}
+
+const BootstrapCarousel = ({ url }: BootstrapCarouselProps) => {
   const [index, setIndex] = React.useState(0);
 
   const handleSelect = (selectedIndex: number, e: any) => {
@@ -44,13 +48,7 @@ const BootstrapCarousel = () => {
         controls={false}
       >
         <Carousel.Item>
-          <img
-            className='d-block w-100'
-            src={
-              process.env.PUBLIC_URL + '/assets/images/posts/post_pic_1.jpeg'
-            }
-            alt='First slide'
-          />
+          <img className='d-block w-100' src={url} alt='First slide' />
         </Carousel.Item>
 
         <Carousel.Item>
