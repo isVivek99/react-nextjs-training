@@ -2,6 +2,7 @@ import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { Row, Col } from 'react-bootstrap';
 import SuggestionBoxListEle from '../SuggestionBoxListElement';
+
 import Button from '../Button';
 import './styles.scss';
 const SuggestionBox = () => {
@@ -15,7 +16,7 @@ const SuggestionBox = () => {
         isListElement={false}
       />
       <ListGroup variant='flush'>
-        <ListGroup.Item>
+        <ListGroup.Item style={{ backgroundColor: '#f9f9f9' }}>
           <Row>
             <Col className='fw-bold f-14 color__gray' sm={8}>
               Suggestions for you

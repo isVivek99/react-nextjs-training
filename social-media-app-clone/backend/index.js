@@ -3,7 +3,7 @@ import app from './server.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const port = 4011;
+const port = 4000;
 
 const connectDatabase = async () => {
   try {

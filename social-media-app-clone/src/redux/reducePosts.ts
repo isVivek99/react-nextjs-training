@@ -1,6 +1,4 @@
 import types from './actionTypes';
-import { loadPostsSuccess, addPostsSuccess } from '../actions/postActions';
-import axios from 'axios';
 
 interface Post {
   title: String;

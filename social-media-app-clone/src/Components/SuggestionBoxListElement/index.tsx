@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Button from '../Button';
+import Image from '../Image';
 import './styles.scss';
 
 interface SuggestionBoxListEleProps {
@@ -26,9 +27,7 @@ const SuggestionBoxListEle = ({
         } align-items-center ${isListElement ? 'my-1' : 'my-3'} `}
       >
         <Col sm={isListElement ? 2 : 3}>
-          <div className={isListElement ? 'list_user_img' : 'user_img'}>
-            <img src={process.env.PUBLIC_URL + `${imgUrl}`} alt='' />
-          </div>
+          <Image isListElement={isListElement} imgUrl={imgUrl} />
         </Col>
         <Col sm={7} style={{ flexGrow: 1 }}>
           <div className='bold f-14 username'>{title}</div>

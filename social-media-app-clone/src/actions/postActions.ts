@@ -25,29 +25,11 @@ export const addPostsError = () => ({
   type: types.ADD_POSTS_ERROR,
 });
 
-// export const addPost = (post: any) => (dispatch: Dispatch) => {
-//   console.log(post);
-//   const headerObject = {
-//     Accept: 'application/json',
-//     'Content-type': 'application/json',
-//   };
-//   try {
-//     axios.request({
-//       method: 'post',
-//       url: 'http://localhost:4011/api/createPost',
-//       headers: headerObject,
-//       data: post,
-//     });
-//   } catch (error: any) {
-//     console.log(error.message);
-//   }
-// };
-
 export const loadPosts = () => async (dispatch: Dispatch) => {
   try {
     const resp: any = await axios.request({
       method: 'get',
-      url: 'http://localhost:4011/api/createPost',
+      url: 'http://localhost:4000/api/createPost',
     });
     console.log(resp.data.posts);
 

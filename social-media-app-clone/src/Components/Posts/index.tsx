@@ -2,6 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import rootReducer from '../../redux/index';
 import Post from '../Post';
+import { loadPosts } from '../../actions/postActions';
+import { useAppDispatch } from '../../redux';
 
 interface Post {
   title: string;
@@ -11,7 +13,15 @@ interface Post {
 interface Posts {
   userPosts: Post[];
 }
-const Posts = () => {
+const PostsUI = () => {
+  //distpatch redux-thunk action
+  const dispatch = useAppDispatch();
+
+  React.useEffect(() => {
+    // @ts-ignore
+    dispatch(loadPosts());
+  }, []);
+
   type RootStore = ReturnType<typeof rootReducer>;
   const postsState: Posts =
     useSelector((state: RootStore) => state?.reducePosts) || [];
@@ -31,4 +41,4 @@ const Posts = () => {
   );
 };
 
-export default Posts;
+export default PostsUI;

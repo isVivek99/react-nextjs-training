@@ -18,10 +18,12 @@ const defaultUserState: UserLoggedInObject = {
 
 const reduceUsers = (
   state = defaultUserState,
-  action: { type: string; payload: UserLoggedIn }
+  action: { type: any; payload: any }
 ) => {
   switch (action.type) {
     case types.LOGIN_USER_SUCCESS:
+      console.log('payload:', action.payload);
+
       return {
         userDetails: { ...action.payload },
         userLoggedIn: true,
