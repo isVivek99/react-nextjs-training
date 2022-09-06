@@ -13,17 +13,17 @@ const responsive = {
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 2,
+    items: 6,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
-    items: 1,
+    items: 6,
   },
 };
 
 const MultiCarousel = () => {
   return (
-    <Card style={{ width: '29rem' }} className='me-5'>
+    <Card style={{ width: '29rem' }} className='mt-2 mx-auto me-md-5'>
       <Carousel responsive={responsive}>
         <Image
           isListElement={false}

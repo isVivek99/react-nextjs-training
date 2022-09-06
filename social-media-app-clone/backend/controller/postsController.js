@@ -26,7 +26,7 @@ export const registerPost = async (req, res) => {
       url,
     });
 
-    if (post) return res.status(201).json({ message: 'url added' });
+    if (post) return res.status(201).json({ message: 'url added', data: post });
   } catch (error) {
     return res.json(error.message);
   }

@@ -57,6 +57,13 @@ const reducePosts = (
       };
     }
 
+    case types.ADD_POST: {
+      return {
+        ...state,
+        userPosts: [...state.userPosts, action.payload],
+      };
+    }
+
     default:
       return state;
   }

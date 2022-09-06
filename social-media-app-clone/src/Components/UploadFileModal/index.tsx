@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { Col, Row, InputGroup } from 'react-bootstrap';
-import { loadPosts } from '../../actions/postActions';
+import { addPost } from '../../actions/postActions';
 import { useAppDispatch } from '../../redux';
 
 import axios from 'axios';
@@ -37,10 +37,12 @@ const UploadFileModal = ({ show, onHide }: UploadFileModalProps) => {
         'https://api.cloudinary.com/v1_1/dtn8fwwj7/image/upload',
         data
       );
-      console.log(resp);
-      await updateBackend(resp.data.url);
-      // @ts-ignore
-      dispatch(loadPosts());
+
+      const postData = await updateBackend(resp.data.url);
+      console.log(postData);
+      if (postData.data) {
+        dispatch(addPost(postData));
+      }
     } catch (error: any) {
       alert(error.message);
     }
@@ -62,7 +64,7 @@ const UploadFileModal = ({ show, onHide }: UploadFileModalProps) => {
         headers: headerObject,
         data: body,
       });
-      return resp;
+      return resp.data;
     } catch (error: any) {
       console.log(error.message);
     }

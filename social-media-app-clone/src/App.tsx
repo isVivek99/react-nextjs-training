@@ -19,14 +19,7 @@ function App() {
     <div className='App'>
       <header className='App-header'>
         <Routes>
-          <Route
-            path='/'
-            element={
-              // <ProtectedRoute>
-              <Home />
-              // </ProtectedRoute>
-            }
-          />
+          <Route path='/' element={<Home />} />
 
           <Route path='/login' element={<Login />} />
         </Routes>

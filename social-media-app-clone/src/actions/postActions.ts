@@ -14,15 +14,9 @@ export const loadGPostsError = () => ({
   type: types.LOAD_POSTS_ERROR,
 });
 
-export const addPostsStart = () => ({
-  type: types.ADD_POSTS_START,
-});
-export const addPostsSuccess = (payload: any) => ({
-  type: types.ADD_POSTS_SUCCESS,
+export const addPost = (payload: any) => ({
+  type: types.ADD_POST,
   payload,
-});
-export const addPostsError = () => ({
-  type: types.ADD_POSTS_ERROR,
 });
 
 export const loadPosts = (pageNumber: number) => async (dispatch: Dispatch) => {

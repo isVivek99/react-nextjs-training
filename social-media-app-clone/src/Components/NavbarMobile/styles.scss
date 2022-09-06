@@ -1,0 +1,14 @@
+@import '../../sass/index.scss';
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  background-color: $background-color-white;
+  .max-width {
+    max-width: 935px;
+    width: 100%;
+  }
+}
+.dropdown-toggle::after {
+  content: none !important;
+}

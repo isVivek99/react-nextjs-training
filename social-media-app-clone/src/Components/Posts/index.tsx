@@ -50,7 +50,7 @@ const PostsUI = () => {
   }, [pageNumber]);
 
   return (
-    <div className='mt-2 me-5'>
+    <div className='mt-2 mx-auto me-md-5 '>
       {userPosts.map((post: any, index: number) => {
         if (userPosts.length === index + 1) {
           return (
