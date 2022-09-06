@@ -2,6 +2,7 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Carousel from 'react-bootstrap/Carousel';
 import './styles.scss';
+const PostImage = React.lazy(() => import('../PostImage'));
 
 interface BootstrapCarouselProps {
   url: string;
@@ -48,12 +49,25 @@ const BootstrapCarousel = ({ url }: BootstrapCarouselProps) => {
         controls={false}
       >
         <Carousel.Item>
-          <img className='d-block w-100' src={url} alt='First slide' />
+          <React.Suspense
+            fallback={
+              <img
+                alt='suspense_img'
+                src={
+                  process.env.PUBLIC_URL +
+                  '/assets/images/posts/suspense_image.jpeg'
+                }
+              />
+            }
+          >
+            <PostImage url={url} />
+          </React.Suspense>
         </Carousel.Item>
 
         <Carousel.Item>
           <img
             className='d-block w-100'
+            style={{ aspectRatio: '16/9', objectFit: 'contain' }}
             src={
               process.env.PUBLIC_URL + '/assets/images/posts/post_pic_1.jpeg'
             }
@@ -64,6 +78,7 @@ const BootstrapCarousel = ({ url }: BootstrapCarouselProps) => {
         <Carousel.Item>
           <img
             className='d-block w-100'
+            style={{ aspectRatio: '16/9', objectFit: 'contain' }}
             src={
               process.env.PUBLIC_URL + '/assets/images/posts/post_pic_1.jpeg'
             }

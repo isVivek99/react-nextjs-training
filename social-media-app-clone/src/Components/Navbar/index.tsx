@@ -1,6 +1,7 @@
 import React from 'react';
 import Input from '../Input';
 import UploadFileModal from '../UploadFileModal';
+import { Link } from 'react-router-dom';
 import './styles.scss';
 
 function Navbar() {
@@ -51,7 +52,11 @@ function Navbar() {
               <div className='px-3'>
                 <i className='fas fa-heart f-24 fa-inactive'></i>
               </div>
-              <div className='px-3 list_user_img'>
+              <div
+                className='px-3 list_user_img dropdown-toggle'
+                data-bs-toggle='dropdown'
+                aria-expanded='false'
+              >
                 <img
                   src={
                     process.env.PUBLIC_URL +
@@ -60,6 +65,15 @@ function Navbar() {
                   style={{ width: '32px' }}
                   alt=''
                 />
+                <div className='dropdown'>
+                  <ul className='dropdown-menu'>
+                    <li>
+                      <Link className='dropdown-item' to='/login'>
+                        user options
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>

@@ -58,7 +58,7 @@ const UploadFileModal = ({ show, onHide }: UploadFileModalProps) => {
     try {
       resp = await axios.request({
         method: 'post',
-        url: 'http://localhost:4011/api/createPost',
+        url: 'http://localhost:4000/api/createPost',
         headers: headerObject,
         data: body,
       });
