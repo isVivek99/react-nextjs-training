@@ -52,30 +52,18 @@ function Navbar() {
               <div className='px-3'>
                 <i className='fas fa-heart f-24 fa-inactive'></i>
               </div>
-              <div
-                className='px-3 list_user_img dropdown-toggle'
-                data-bs-toggle='dropdown'
-                aria-expanded='false'
-              >
-                <img
-                  src={
-                    process.env.PUBLIC_URL +
-                    '/assets/images/profile-pics/insta-dp.jpeg'
-                  }
-                  style={{ width: '32px' }}
-                  alt=''
-                />
-                <div className='dropdown'>
-                  <ul className='dropdown-menu'>
-                    <li>
-                      <Link className='dropdown-item' to='/login'>
-                        {' '}
-                        user options
-                      </Link>
-                    </li>
-                  </ul>
+              <Link to='/login'>
+                <div className='px-3 list_user_img dropdown-toggle'>
+                  <img
+                    src={
+                      process.env.PUBLIC_URL +
+                      '/assets/images/profile-pics/insta-dp.jpeg'
+                    }
+                    style={{ width: '32px' }}
+                    alt=''
+                  />
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
         </nav>
