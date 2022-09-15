@@ -1,0 +1,8 @@
+@import './variables';
+@import './mixins';
+@import './utilities';
+@import './common.scss';
+body,
+html {
+  background-color: $background-color-gray !important;
+}
