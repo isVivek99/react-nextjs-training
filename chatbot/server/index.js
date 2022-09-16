@@ -2,7 +2,7 @@ const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
-
+const trainAI = require('../server/services/chatbot.service');
 const app = express();
 const server = http.createServer(app);
 app.use(cors());
@@ -13,14 +13,16 @@ const io = new Server(server, {
   },
 });
 
-app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
-});
+//train the AI
+trainAI.trainChatBotIA();
 
 io.on('connection', (socket) => {
-  console.log(`a user connected ${socket.id}`);
-  socket.on('send_message', (data) => {
-    socket.broadcast.emit('received_message', data);
+  socket.on('send_message', async (data) => {
+    let response = await trainAI.generateResponseAI(data.message);
+    response.answer !== undefined
+      ? response.answer
+      : "I am sorry, I don't understand :( ";
+    socket.emit('received_message', response);
   });
 });
 
